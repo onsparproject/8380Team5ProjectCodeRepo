@@ -1,5 +1,5 @@
 
-from django.db import models
+"""from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
@@ -21,7 +21,7 @@ class Product(models.Model):
         self.save()
 
     def __str__(self):
-        return str(self.client_number)
+        return str(self.client_number)"""
 
 
 #class Blog(models.Model):

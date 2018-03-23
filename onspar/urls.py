@@ -17,10 +17,17 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views
+from django.conf import settings
+from django.conf.urls.static import static
+from shop.views import product_list
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('portfolio.urls', namespace='portfolio')),
+    url(r'',include('shop.urls',namespace='shop')),
+    #url(r'^', include ('shop.urls', namespace='shop')), #added
+    #url(r'^product/$', views.product_list, name='product_list'),
     url(r'^accounts/login/$', views.login, name='login'),
     url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
 ]
+

@@ -1,5 +1,4 @@
-from django.contrib import admin
-from .models import Product
+"""from django.contrib import admin
 
 class ProductList(admin.ModelAdmin):
     list_display = ('product_id', 'product_name', 'product_type', 'product_descr')
@@ -10,4 +9,4 @@ class ProductList(admin.ModelAdmin):
 
 
 admin.site.register(Product, ProductList)
-
+"""
