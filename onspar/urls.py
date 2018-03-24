@@ -24,7 +24,7 @@ from shop.views import product_list
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('portfolio.urls', namespace='portfolio')),
-    url(r'',include('shop.urls',namespace='shop')),
+    url(r'^shopping/', include('shop.urls', namespace='shop')),
     #url(r'^', include ('shop.urls', namespace='shop')), #added
     #url(r'^product/$', views.product_list, name='product_list'),
     url(r'^accounts/login/$', views.login, name='login'),
