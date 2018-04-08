@@ -1,7 +1,8 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Onspar Shopping Store</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% block styles %}
@@ -41,14 +42,11 @@
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="{% url 'portfolio:home' %}">Home</a></li>
         <li><a href="{% url 'shop:product_list'%}">Products</a></li>
-        <li><a href="#">Deals</a></li>
         <li><a href="#">Blog</a></li>
-        <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
         {% if user.is_staff %}
         <li><a class="btn rounded btn-outline-info btn-m" href="{% url 'portfolio:employee_view'%}" role="button">Manage</a>
