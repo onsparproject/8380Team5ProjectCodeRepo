@@ -20,6 +20,7 @@ from django.contrib.auth import views
 from django.conf import settings
 from django.conf.urls.static import static
 from shop.views import product_list
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,6 +28,6 @@ urlpatterns = [
     url(r'^shopping/', include('shop.urls', namespace='shop')),
     #url(r'^', include ('shop.urls', namespace='shop')), #added
     #url(r'^product/$', views.product_list, name='product_list'),
-    url(r'^accounts/login/$', views.login, name='login'),
-    url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
+    url(r'^login/$', auth_views.login, {'template_name': 'portfolio\login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout,  {'next_page': '/'}, name='logout'),
 ]
