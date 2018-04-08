@@ -25,6 +25,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('portfolio.urls', namespace='portfolio')),
+    url(r'^cart/', include('cart.urls', namespace='cart')),
     url(r'^shopping/', include('shop.urls', namespace='shop')),
     #url(r'^', include ('shop.urls', namespace='shop')), #added
     #url(r'^product/$', views.product_list, name='product_list'),

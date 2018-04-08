@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio',
     'shop',
-    'social_django'
+    'cart',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -131,6 +132,9 @@ USE_L10N = True
 USE_TZ = True
 
 
+## CART
+
+CART_SESSION_ID = 'cart'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_ROOT = 'staticfiles'

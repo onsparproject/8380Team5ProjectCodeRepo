@@ -49,10 +49,15 @@
 				{% endfor %}
       </select>
 						</p>
-						<div class="row">
+						<form action="{% url "cart:cart_add" product.id %}" method="post">
+						 <div class="row">
 							<div class="col-md-3  pull-right">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Add to Cart</a></div>
-						</div>
+								{{cart_product_form}}
+								{% csrf_token %}
+								 <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> &nbsp;Add to Cart</button>
+							</div>
+						 </div>
+						</form>
 
 						<p> </p>
 					</div>
