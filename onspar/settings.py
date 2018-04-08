@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio',
     'shop',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -66,10 +67,22 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  # <- Here
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+ 'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
+ 'social_core.backends.google.GoogleOpenId',  # for Google authentication
+ 'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+ 'social_core.backends.github.GithubOAuth2',  # for Github authentication
+ 'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
+
+ 'django.contrib.auth.backends.ModelBackend',
+)
 
 WSGI_APPLICATION = 'onspar.wsgi.application'
 
@@ -126,5 +139,12 @@ STATICFILES_DIRS = (
             os.path.join(BASE_DIR, 'static'),
             )
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'portfolio:home'
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='863205080972-icurg3h33q4k3c368d3i9i3r0pvk49hb.apps.googleusercontent.com'  #Paste CLient Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '5NDqEDrQKjt82gOwODqY-VHK' #Paste Secret Key
+
+SOCIAL_AUTH_GITHUB_KEY = 'c9bf26c29a5c3de2a28c'
+SOCIAL_AUTH_GITHUB_SECRET = '726a30b0a60987fec29a7ac11e51fb67f7c00cd7'
