@@ -30,4 +30,5 @@ urlpatterns = [
     #url(r'^product/$', views.product_list, name='product_list'),
     url(r'^login/$', auth_views.login, {'template_name': 'portfolio\login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout,  {'next_page': '/'}, name='logout'),
+    url(r'^auth/', include('social_django.urls', namespace='social')),
 ]
