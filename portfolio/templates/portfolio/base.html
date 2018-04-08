@@ -50,6 +50,9 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        {% if user.is_staff %}
+        <li><a class="btn rounded btn-outline-info btn-m" href="{% url 'portfolio:employee_view'%}" role="button">Manage</a>
+        {% endif %}
         {% if user.is_authenticated %}
         <li><a class="btn rounded btn-outline-info btn-m" href="{% url 'logout'%}" role="button">Logout</a>
         {% else %}
