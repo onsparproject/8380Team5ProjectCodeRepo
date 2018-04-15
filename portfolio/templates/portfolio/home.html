@@ -1,46 +1,29 @@
 {% extends "portfolio/base.html" %}
 {% load staticfiles %}
+{% block styles %}
+    <link href="{% static "css/landing.css" %}" rel="stylesheet">
+{% endblock %}
+{% block javascript %}
+<script>
+
+function scrollWin() {
+    window.scrollTo(0, 250);
+}
+window.onload = scrollWin;
+
+$(document).ready(function() {
+setTimeout(function() {
+  $("#main").removeClass("is-loading");
+}, 100)
+});
+</script>
+{% endblock %}
 {% block content %}
 
 
-<div class="page-container">
-    <h2 class="hello">Hello </h2>
-    <p>Welcome to the Onspar Shopping Website! Omaha's best online store!</p>
-
-</div>
-<div class="content container">
-                  <div class="row">
-                  <div class="col-sm-4 col-md-4">
-                      <div class="panel panel-default">
-                        <div class="panel-body">
-                          <a href="https://imgbb.com/"><img src="https://image.ibb.co/dSY1bc/iphone.jpg" alt="iphone" height==250 width=250 border="0"></a>
-                                  <h2>Mobiles</h2>
-                                  <p>View Moblies</p>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-sm-4 col-md-4">
-                      <div class="panel panel-default">
-                        <div class="panel-body">
-                          <a href="https://imgbb.com/"><img src="https://image.ibb.co/gcHoNH/laptop.jpg" alt="laptop" height==500 width=300 border="0"></a>
-                              <h2>Laptops</h2>
-                            <p>View Laptops</p>
-                        </div>
-                      </div>
-                    </div>
-
-                  <div class="col-sm-4 col-md-4">
-                      <div class="panel panel-default">
-                        <div class="panel-body">
-                          <a href="https://imgbb.com/"><img src="https://image.ibb.co/ij4Dpx/computer_accessories.png" alt="computer_accessories" height==500 width=300 border="0"></a>
-                            <h2>Shop</h2>
-                              <p>Browse accessories</p>
-                        </div>
-                      </div>
-                    </div>
-
-
-              </div>
+<div id="main" class="is-loading">
+	<h1>
+		<span id="test">Onspar: The Shopping Website</span>
+	</h1>
 </div>
 {% endblock %}

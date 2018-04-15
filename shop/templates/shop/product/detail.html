@@ -8,6 +8,12 @@
 {% block content %}
 <div class="container">
     <div class="row">
+			<div class="panel-body" style="float:right">
+                <strong>Supported Translations:</strong>
+                <a target="_blank" href="{% url "shop:French" product.pk %}">Translate to French</a>|
+								<a target="_blank" href="{% url "shop:Hindi" product.pk %}">Translate to Hindi</a>|
+                <a target="_blank" href="{% url "shop:Spanish" product.pk %}">Translate to Spanish</a>
+        </div>
     	<div class="col-md-12">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail" >
@@ -49,22 +55,53 @@
 				{% endfor %}
       </select>
 						</p>
+
 						<form action="{% url "cart:cart_add" product.id %}" method="post">
                          <div class="row">
                              <div class="col-md-3  pull-right">
                                  {{cart_product_form}}
                                  {% csrf_token %}
-								 <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> &nbsp;Add to Cart</button>
+								 <button type="submit" class="btn btn-md btn-primary"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> &nbsp;Add to Cart</button>
                              </div>
                          </div>
                         </form>
-						<p> </p>
+
 					</div>
 				</div>
 			</div>
+			<h3 class="display-4"> Reviews:</h3>
+			<br>
+			<div class="col-sm-6 col-md-12">
+				 {% for review in reviews %}
+				 			{% if forloop.counter|divisibleby:2 %}
+										<div class="thumbnail col-xs-9" style="float:left">
+										<div class="caption">
+										<blockquote class="blockquote text-left">
+										<h3>{{ review.title }}</h3>
+					  				<p class="mb-0">{{ review.text }}</p>
+										<br>
+										<h5>{{ review.author }}</h5><h6>  {{review.published_date}}</h6>
+										</blockquote>
+										</div>
+									</div>
+							{% else %}
+									<div class="thumbnail col-xs-9" style="float:right" >
+										<div class="caption">
+											<blockquote class="blockquote text-right">
+											<h3>{{ review.title }}</h3>
+						  				<p class="mb-0">{{ review.text }}</p>
+											<br>
+											<h5>{{ review.author }}</h5><h6>  {{review.published_date}}</h6>
+											</blockquote>
+										</div>
+								</div>
+							{% endif %}
+				 {% endfor %}
+</div>
+			</div>
 
-        </div>
-
+						<a class="btn btn-warning" style="float:right" href="{% url "shop:addReview" product.pk %}" role="button">Add a review</a>
+</div>
 	</div>
 </div>
 {% endblock %}
