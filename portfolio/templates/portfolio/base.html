@@ -44,7 +44,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="{% url 'portfolio:home' %}">Home</a></li>
         <li><a href="{% url 'shop:product_list'%}">Products</a></li>
-        <li><a href="#">Blog</a></li>
+        <li><a href="{% url 'blog:post_list' %}">Blog</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
@@ -52,6 +52,7 @@
         <li><a class="btn rounded btn-outline-info btn-m" href="{% url 'portfolio:employee_view'%}" role="button">Manage</a>
         {% endif %}
         {% if user.is_authenticated %}
+        <li><a class="btn rounded btn-outline-info btn-m" href="#" role="button">View Profile</a>
         <li><a class="btn rounded btn-outline-info btn-m" href="{% url 'logout'%}" role="button">Logout</a>
         {% else %}
         <li><a class="btn rounded btn-outline-info btn-m" href="{% url 'login' %}" role="button">Login</a>

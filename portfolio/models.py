@@ -1,47 +1,20 @@
-
-"""from django.db import models
-from django.utils import timezone
+'''from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
-class Product(models.Model):
-    product_name = models.CharField(max_length=50)
-    product_descr = models.CharField(max_length=250,default='null')
-    product_id = models.IntegerField(blank=False, null=False)
-    product_type = models.CharField(max_length=50)
-    product_cost = models.IntegerField(blank=False, null=False)
-    created_date = models.DateTimeField(default=timezone.now)
-    updated_date = models.DateTimeField(auto_now_add=True)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=500, blank=True)
+    location = models.CharField(max_length=30, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
 
-    def created(self):
-        self.created_date = timezone.now()
-        self.save()
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
 
-    def updated(self):
-        self.updated_date = timezone.now()
-        self.save()
-
-    def __str__(self):
-        return str(self.client_number)"""
-
-
-#class Blog(models.Model):
- #   name = models.CharField(max_length=50)
-  #  item_number = models.IntegerField(blank=False, null=False)
-   # item_type = models.CharField(max_length=50)
-    #description = models.CharField(max_length=200)
-   # qty_on_hand = models.IntegerField(blank=False, null=False)
-   # expired_date = models.DateTimeField(default=timezone.now)
-   # created_date = models.DateTimeField(default=timezone.now)
-   # updated_date = models.DateTimeField(auto_now_add=True)
-
-    #def created(self):
-     #   self.created_date = timezone.now()
-      #  self.save()
-
-   # def updated(self):
-    #    self.updated_date = timezone.now()
-     #   self.save()
-
-   # def __str__(self):
-    #    return str(self.item_number)
-
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
+'''

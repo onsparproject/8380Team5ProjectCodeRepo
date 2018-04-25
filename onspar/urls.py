@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from shop.views import product_list
 from django.contrib.auth import views as auth_views
 from portfolio.views import register
+from blog.views import post_list
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -32,4 +33,5 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout,  {'next_page': '/'}, name='logout'),
     url(r'^auth/', include('social_django.urls', namespace='social')),
     url(r'^register/$', auth_views.login, {'template_name': 'account/register.html'}, name='register'),
+    url(r'^blog/', include('blog.urls',namespace='blog')),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

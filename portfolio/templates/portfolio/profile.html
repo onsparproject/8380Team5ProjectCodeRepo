@@ -1,0 +1,16 @@
+{% extends "portfolio/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="page-container">
+    <h2 class="hello">Hello </h2>
+    <p>Your Profile</p>
+    <p>Username: {{user}}</p>
+    <p>First Name: {{user.first_name}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Mobile: {{user.phone_number}}</p>
+    <p>Address: {{user.address}}</p>
+
+
+</div>
+
+{% endblock %}

@@ -1,5 +1,5 @@
 from django.utils import timezone
-from .models import *
+#from .models import Profile
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
@@ -9,11 +9,23 @@ from shop.views import * #added
 from shop.models import Product
 from shop.forms import ProductForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib import messages
+
 
 now = timezone.now()
 def home(request):
     return render(request, 'portfolio/home.html',
                  {'portfolio': home})
+
+#def profile(request):
+ #   return render(request, 'portfolio/profile.html',product_list
+  #               {'portfolio': profile})
+
+#def update_profile(request, user_id):
+ #   user = User.objects.get(pk=user_id)
+  #  user.profile.bio = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit...'
+   # user.save()
 
 def register(request):
     if request.method == 'POST':
@@ -80,3 +92,5 @@ def employee_product_delete(request, pk):
     product = get_object_or_404(Product, pk=pk)
     product.delete()
     return redirect('portfolio:employee_view')
+
+

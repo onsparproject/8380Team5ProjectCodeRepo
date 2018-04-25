@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio',
     'shop',
-    'social_django'
+    'social_django',
+    'blog',
 ]
 
 MIDDLEWARE_CLASSES = [
