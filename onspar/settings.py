@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'portfolio',
     'shop',
     'cart',
-    'social_django'
+    'social_django',
+    'blog'
 ]
 
 MIDDLEWARE_CLASSES = [

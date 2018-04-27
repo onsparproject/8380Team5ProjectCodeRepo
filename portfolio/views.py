@@ -3,12 +3,13 @@ from .models import *
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-from .forms import  UserRegistrationForm
+from .forms import   UserEditForm, ProfileEditForm
 from django.db.models import Sum
 from shop.views import * #added
 from shop.models import Product
 from shop.forms import ProductForm
 from django.contrib.auth.decorators import login_required
+from .models import Profile
 
 now = timezone.now()
 def home(request):
@@ -26,6 +27,7 @@ def register(request):
                 user_form.cleaned_data['password'])
             # Save the User object
             new_user.save()
+            profile = Profile.objects.create(user=new_user)
             return render(request,
                           'account/register_done.html',
                           {'new_user': new_user})
@@ -37,6 +39,40 @@ def register(request):
 def employee(request):
     products = Product.objects.filter(available=True)
     return render(request, 'portfolio/admin.html', {'products': products})
+
+
+
+@login_required
+def myProfile(request):
+    my_profile = Profile.objects.all().filter(user=request.user)
+    return render(request,
+                  'portfolio/myProfile.html',
+                  {'user': request.user,
+                  'profile': my_profile[0]})
+
+
+
+@login_required
+def edit(request):
+    if request.method == 'POST':
+        user_form = UserEditForm(instance=request.user,data=request.POST)
+        profile_form = ProfileEditForm(instance=request.user.profile,
+                       data=request.POST,
+                       files=request.FILES)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+    else:
+        user_form = UserEditForm(instance=request.user)
+        profile_form = ProfileEditForm(
+        instance=request.user.profile)
+    return render(request,
+                  'portfolio/editProfile.html',
+                  {'user_form': user_form,
+                  'profile_form': profile_form})
+
+
+
 
 @login_required
 def employee_product_edit(request, pk):
