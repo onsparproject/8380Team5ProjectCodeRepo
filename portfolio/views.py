@@ -10,6 +10,7 @@ from shop.models import Product
 from shop.forms import ProductForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
+from geopy import Nominatim
 
 now = timezone.now()
 def home(request):
@@ -45,10 +46,15 @@ def employee(request):
 @login_required
 def myProfile(request):
     my_profile = Profile.objects.all().filter(user=request.user)
+    geolocator = Nominatim()
+    location = geolocator.geocode(str(my_profile[0].address)+", "+str(my_profile[0].city))
     return render(request,
                   'portfolio/myProfile.html',
                   {'user': request.user,
-                  'profile': my_profile[0]})
+                  'profile': my_profile[0],
+                  'lat': location.latitude,
+                  'long': location.longitude,
+                  'loc': str(my_profile[0].address)+", "+str(my_profile[0].city)})
 
 
 
