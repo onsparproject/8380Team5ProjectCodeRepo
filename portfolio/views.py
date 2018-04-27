@@ -7,6 +7,7 @@ from .forms import   UserEditForm, ProfileEditForm
 from django.db.models import Sum
 from shop.views import * #added
 from shop.models import Product
+from cart.cart import Cart
 from shop.forms import ProductForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
@@ -41,6 +42,13 @@ def employee(request):
     products = Product.objects.filter(available=True)
     return render(request, 'portfolio/admin.html', {'products': products})
 
+def notifications(request):
+    products = Product.objects.all()
+    requireRestock = []
+    for product in products:
+        if (product.stock <= 20):
+            requireRestock.append(product)
+    return render(request,'portfolio/notifications.html',{'notifications': requireRestock})
 
 
 @login_required

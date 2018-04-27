@@ -52,6 +52,7 @@
         <li><a href= "{% url 'cart:cart_detail' %}" ><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
         {% if user.is_staff %}
         <li><a class="btn rounded btn-outline-info btn-m" href="{% url 'portfolio:employee_view'%}" role="button">Manage</a>
+        <li><a class="btn rounded btn-outline-info btn-m" href="{% url 'portfolio:notifications'%}" role="button">Notifications</a>
         {% endif %}
         {% if user.is_authenticated %}
         <li><a class="btn rounded btn-outline-info btn-m" href="{% url 'portfolio:myProfile' %}" role="button">My Profile</a>

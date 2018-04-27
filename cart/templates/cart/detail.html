@@ -70,6 +70,6 @@
   </table>
   <ul class="nav nav-pills" style="float: right">
       <li role="presentation" class="active"><a href="{% url "shop:product_list" %}" >Continue shopping</a></li>
-      <li role="presentation" class="active"><a href="#" >Checkout</a></li>
+      <li role="presentation" class="active"><a href="{% url "cart:checkout" %}">Checkout</a></li>
   </ul>
 {% endblock %}

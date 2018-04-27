@@ -1,0 +1,64 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+    <div>
+      <ol>
+            <h3><strong><li>Shipping Address:</li></strong></h3>
+                      <div style="padding: 0px 10px 5px 5px ">
+                          <h4><strong>{{ profile.address }},</h4></strong>
+                          <h4><strong>{{ profile.city }}, {{ profile.zipcode }}</h4></strong>
+                          <h4><strong>{{ profile.country }}</h4></strong>
+                      </div>
+            <h3><strong><li>Review Items:</li></strong></h3>
+            <div class="container">
+              <div class="row">
+                <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Product Image</th>
+                  <th scope="col">Product Price</th>
+                  <th scope="col">Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in cart %}
+                  {% with product=item.product %}
+                <tr>
+                  <th scope="row">{{ product.name }}</th>
+                  <td><img src="{{ product.image }}"height="75" width="75"></td>
+                  <td>{{ product.price }}</td>
+                  <td>{{ item.quantity_x }}</td>
+                </tr>
+                {% endwith %}
+            {% endfor %}
+            </table>
+              </div>
+            </div>
+            <h3><strong><li>Coupons:</li></strong></h3>
+              <form method="post">
+                {% csrf_token %}
+                {{ form.coupons }}
+              {% if applied > 0 %}
+                <button id='btnRemoveDummy' type="submit">Apply</button>
+              {% endif %}
+              </form>
+
+              <h4><strong>{{ applied_coupon }}</h4></strong>
+            <h3><strong><li>Order Summary:</li></strong></h3>
+            <div style="padding: 0px 10px 5px 5px ">
+                <h4><strong>Items({{ cart.total_cart_items }}):{{ cart.get_total_price }}</h4></strong>
+                <h4><strong>Shipping & Handling: {{ cart.ship_and_handle }}</h4></strong>
+                <h4><strong>Total Before Tax:{{ cart.total_before_tax }}</h4></strong>
+                <h4><strong>Estimated Tax:{{ cart.estimated_tax }}</h4></strong>
+                <hr>
+                {% if applied > 0 %}
+                  <h2 style="color:red">Order Total:{{ cart.final_price }}</h2>
+                {% else %}
+                  <h2 style="color:red">Order Total:{{ coupon_final_price }}</h2>
+                {% endif %}
+            </div>
+      </ol>
+            <a class="btn btn-warning" style="float:right" href="#" role="button">Proceed with Payment</a>
+    </div>
+
+{% endblock %}

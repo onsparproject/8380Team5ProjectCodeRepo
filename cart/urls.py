@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^remove/(?P<product_id>\d+)/$',
         views.cart_remove,
         name='cart_remove'),
+    url(r'^checkout/$', views.checkout, name='checkout')
 ]

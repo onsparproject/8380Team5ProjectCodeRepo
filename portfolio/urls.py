@@ -15,6 +15,8 @@ urlpatterns = [
   #  url(r'^account_settings_list/$', views.account_settings_list, name='account_settings_list'),
     url(r'^register/$', views.register, name='register'),
     url(r'^profile/$', views.myProfile, name='myProfile'),
-    url(r'^profileEdit/$', views.edit, name='editProfile')
+    url(r'^profileEdit/$', views.edit, name='editProfile'),
+    url(r'^notifications/$', views.notifications, name='notifications'),
+    
 
 ]
