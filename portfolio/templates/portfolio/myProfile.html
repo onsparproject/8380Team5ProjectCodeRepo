@@ -3,6 +3,42 @@
 {% block title %}My Profile{% endblock %}
 
 {% block content %}
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<script>
+
+  var map;
+
+  function initMap() {
+    var map;
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: {lat: 41.2915193, lng: -96.3614327}
+          });
+            codeAddress();
+      }
+
+  function codeAddress() {
+  	var geocoder = new google.maps.Geocoder();
+  	map = new google.maps.Map(document.getElementById('map') , {
+  		zoom: 15,
+  		center: {lat: {{ lat }}, lng: {{ long }}}
+
+  	});
+      var address = "{{ loc }}";
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == 'OK') {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
+</script>
 <div class="container">
   <h1>My Profile:</h1>
   <h3><strong>First Name:{{ user.first_name }}</strong></h3>
@@ -15,6 +51,9 @@
   <h3><strong>Zipcode:{{ profile.zipcode }}</strong></h3>
   <h3><strong>My Photo:</strong></h3>
   <img src="{{ profile.photo }}" class="img-responsive">
+  <div id="map" onload="codeAddress() style="border-style: solid;" " style="width: 540px; height: 540px;" ></div>
   <a class="btn btn-primary" href="{% url 'portfolio:editProfile' %}"  role="button">Edit Profile</a>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYCiTaPolA8Y-JbDjXTmfpjuJ-FaJAR8Q&libraries=places&callback=initMap" async defer></script>
 
 {% endblock %}
