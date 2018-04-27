@@ -1,0 +1,20 @@
+{% extends "portfolio/base.html" %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>My Profile:</h1>
+  <h3><strong>First Name:{{ user.first_name }}</strong></h3>
+  <h3><strong>Last Name:{{ user.last_name }}</strong></h3>
+  <h3><strong>Email:{{ user.email }}</strong></h3>
+  <h3><strong>Phone Number:{{ profile.phoneNumber }}</strong></h3>
+  <h3><strong>Address:{{ profile.address }}</strong></h3>
+  <h3><strong>City:{{ profile.city }}</strong></h3>
+  <h3><strong>Country:{{ profile.country }}</strong></h3>
+  <h3><strong>Zipcode:{{ profile.zipcode }}</strong></h3>
+  <h3><strong>My Photo:</strong></h3>
+  <img src="{{ profile.photo }}" class="img-responsive">
+  <a class="btn btn-primary" href="{% url 'portfolio:editProfile' %}"  role="button">Edit Profile</a>
+
+{% endblock %}

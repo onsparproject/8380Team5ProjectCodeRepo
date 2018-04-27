@@ -1,0 +1,17 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+  <h2>Login</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+  <div class="container">
+  <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-info" role="button">Login with Google</a>
+   <a href="{%url 'register'%}" class="btn btn-info" role="button">Create new account</a>
+  <a href="{% url 'social:begin' 'github' %}" class="btn btn-info" role="button">Login with Github</a>
+</div>
+{% endblock %}

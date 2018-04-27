@@ -6,13 +6,102 @@
 {% endblock %}
 
 {% block content %}
-	<div class="product-detail">
-		<img src="{% if product.image %}{{ product.image.url }}{% else %}
-{% static "img/no_image.png" %}{% endif %}">
-	<h1>{{ product.name }}</h1>
-	<h2><a href="{{ product.category.get_absolute_url }}">{{ product.
-category }}</a></h2>
-	<p class="price">${{ product.price }}</p>
-	{{ product.description|linebreaks }}
+<div class="container">
+    <div class="row">
+			<div class="panel-body" style="float:right">
+                <strong>Supported Translations:</strong>
+                <a target="_blank" href="{% url "shop:French" product.pk %}">Translate to French</a>|
+								<a target="_blank" href="{% url "shop:Hindi" product.pk %}">Translate to Hindi</a>|
+                <a target="_blank" href="{% url "shop:Spanish" product.pk %}">Translate to Spanish</a>
+        </div>
+    	<div class="col-md-12">
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail" >
+					<img src="{{ product.image }}" class="img-responsive">
+					<div class="caption">
+						<div class="row">
+							<div class="col-md-9">
+								<hr>
+								<h3><strong>{{product.name}}</strong></h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-8">
+				<div class="thumbnail" >
+					<div class="caption">
+						<div class="row">
+							<div class="col-md-6 col-xs-6 price">
+								<h4>
+								<strong>Price:</strong>${{product.price}}</h4>
+							</div>
+						</div>
+						<h4><strong>Product Description:</strong><br></h4>
+						<p>
+							<ul>
+							{% for line in product.description_as_list %}
+								<li>{{ line }}</li>
+							{% endfor %}
+						</ul>
+						</p>
+						<p><label for="select">Quantity:</label>
+							<select id="select">
+        <option value="">Select</option>
+				{%for num in product.stock_as_list %}
+				  {% if num != 0 %}
+           <option value="">{{ num }}</option>
+					{% endif %}
+				{% endfor %}
+      </select>
+						</p>
+
+						<form action="{% url "cart:cart_add" product.id %}" method="post">
+                         <div class="row">
+                             <div class="col-md-3  pull-right">
+                                 {{cart_product_form}}
+                                 {% csrf_token %}
+								 <button type="submit" class="btn btn-md btn-primary"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> &nbsp;Add to Cart</button>
+                             </div>
+                         </div>
+                        </form>
+
+					</div>
+				</div>
+			</div>
+			<h3 class="display-4"> Reviews:</h3>
+			<br>
+			<div class="col-sm-6 col-md-12">
+				 {% for review in reviews %}
+				 			{% if forloop.counter|divisibleby:2 %}
+										<div class="thumbnail col-xs-9" style="float:left">
+										<div class="caption">
+										<blockquote class="blockquote text-left">
+										<h3>{{ review.title }}</h3>
+					  				<p class="mb-0">{{ review.text }}</p>
+										<br>
+										<h5>{{ review.author }}</h5><h6>  {{review.published_date}}</h6>
+										</blockquote>
+										</div>
+									</div>
+							{% else %}
+									<div class="thumbnail col-xs-9" style="float:right" >
+										<div class="caption">
+											<blockquote class="blockquote text-right">
+											<h3>{{ review.title }}</h3>
+						  				<p class="mb-0">{{ review.text }}</p>
+											<br>
+											<h5>{{ review.author }}</h5><h6>  {{review.published_date}}</h6>
+											</blockquote>
+										</div>
+								</div>
+							{% endif %}
+				 {% endfor %}
+</div>
+			</div>
+
+						<a class="btn btn-warning" style="float:right" href="{% url "shop:addReview" product.pk %}" role="button">Add a review</a>
+</div>
+	</div>
 </div>
 {% endblock %}
