@@ -5,6 +5,55 @@
 {% endblock %}
 
 {% block content %}
+<style>
+	#main {
+    float:left;
+    width: 96%;
+    margin-right:-220px;
+    overflow:hidden;
+}
+
+.product-list .item {
+    width:25%;
+    height:25%;
+    padding:10px 20px 10px 0;
+    float:left;
+    text-align:center;
+    line-height:1.2;
+}
+
+.product-list .item img {
+    max-width: 25%;
+    max-height: 25%;
+    padding:10px 20px 10px 0;
+    margin-bottom:8px;
+}
+
+.product-detail {
+    text-align:justify;
+}
+
+.product-detail .price {
+    color:#333;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.product-detail img {
+    max-width: 50%;
+    max-height: 50%;
+    float:left;
+    padding:0 20px 20px 0;
+}
+
+.product-detail h1 {
+    margin-bottom:0;
+}
+
+.product-detail h2 {
+    margin-top:10px;
+}
+</style>
 	<div id="sidebar">
 		<h3>Categories</h3>
 		<ul>
@@ -21,10 +70,11 @@
   	<div id="main" class="product-list">
         <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
         {% for product in products %}
-            <div class="item">
+            <div class="item" >
                 <a href="{{ product.get_absolute_url }}">
                     <img src="{{ product.image }}">
                 </a>
+				<br>
                 <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
                 ${{ product.price }}
             </div>

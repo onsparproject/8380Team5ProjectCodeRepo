@@ -193,7 +193,8 @@ ul.errorlist {
 }
 
 .product-list .item img {
-    width:100%;
+    width:50%;
+
     margin-bottom:8px;
 }
 
@@ -290,7 +291,8 @@ ul.errorlist {
 }
 
 .recommendations img {
-    width:200px
+   height:50%;
+   width:50%;
 }
 
 .recommendations p {
@@ -312,5 +314,6 @@ ul.errorlist {
 }
 
 .recommendations.cart img {
-    width:120px;
+   height:50%;
+   width:50%;
 }

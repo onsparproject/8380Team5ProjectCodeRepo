@@ -1,14 +1,48 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<div class="page-header">
+<style>
+    #main
+    {
+     color: blue;
+    font-family: Helvetica;
+    font-size: 100%;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    }
+
+    .post
+    {
+     color: blue;
+    font-family: Helvetica;
+    font-size: 100%;
+    padding:10px 10px 10px 10px;
+    margin:
+    }
+a:hover {
+    color:#77b6e2;
+}
+h2
+{
+font-family: Baskerville;
+font-size: 150%
+}
+a
+{
+padding:10px 10px 10px 10px;
+}
+
+</style>
+<div  class="page-header">
 		{% if user.is_authenticated %}
-    <a class="btn rounded btn-outline-info btn-m" role="button" href="{% url "blog:post_new" %}">New Post</a>
+    <a type="submit" class="btn btn-md btn-primary " href="{% url "blog:post_new" %}">New Post</a>
 			{% endif %}
-            <h2><a href="{% url "blog:post_list" %}">Onspar Blog</a></h2>
+    <h2><a href="{% url "blog:post_list" %}"><b>Onspar Blog</b></a></h2>
 </div>
     {% for post in posts %}
-        <div class="post">
+        <div id =main class="post">
             <div class="date">
                 {{ post.published_date }}
             </div>
