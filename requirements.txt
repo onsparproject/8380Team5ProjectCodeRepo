@@ -28,6 +28,10 @@ pysolr==3.6.0
 pytz==2017.2
 requests==2.18.2
 simplejson==3.11.1
+social-auth-app-django==2.1.0
+social-auth-app-django-mongoengine==1.0.0
+social-auth-core==1.7.0
+social-auth-storage-mongoengine==1.0.1
 six==1.10.0
 urllib3==1.22
 watson-developer-cloud==0.26.1
@@ -35,3 +39,6 @@ whitenoise==3.3.0
 yahoo-finance==1.4.0
 Pillow==2.9.0
 celery==3.1.18
+Twisted==17.9.0
+googletrans
+geopy

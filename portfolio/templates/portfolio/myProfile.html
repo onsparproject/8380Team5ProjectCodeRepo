@@ -39,18 +39,56 @@
       });
     }
 </script>
-<div class="container">
-  <h1>My Profile:</h1>
-  <h3><strong>First Name:{{ user.first_name }}</strong></h3>
-  <h3><strong>Last Name:{{ user.last_name }}</strong></h3>
-  <h3><strong>Email:{{ user.email }}</strong></h3>
-  <h3><strong>Phone Number:{{ profile.phoneNumber }}</strong></h3>
-  <h3><strong>Address:{{ profile.address }}</strong></h3>
-  <h3><strong>City:{{ profile.city }}</strong></h3>
-  <h3><strong>Country:{{ profile.country }}</strong></h3>
-  <h3><strong>Zipcode:{{ profile.zipcode }}</strong></h3>
-  <h3><strong>My Photo:</strong></h3>
-  <img src="{{ profile.photo }}" class="img-responsive">
+<style>
+  #0pi
+  {
+    color: black;
+    font-family: Helvetica;
+    font-size: 100%;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+  }
+  h3
+  {
+    color: black;
+    font-family: Helvetica;
+    font-size: 100%;
+    padding-top: 1px;
+    padding-right: 10px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+  }
+#map
+{
+
+}
+#photo
+{
+float:right;
+}
+h4
+{
+padding-top: 1px;
+    padding-right: 10px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+}
+</style>
+<div id= 0pi class="container">
+  <h4><b>My Profile:</b></h4>
+  <div id="photo">
+  <img src="{{ profile.photo }}" class="img-responsive"></div>
+  <h3><strong>First Name : </strong>{{ user.first_name }}</h3>
+  <h3><strong>Last Name : </strong>{{ user.last_name }}</h3>
+  <h3><strong>Email &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : </strong>{{ user.email }}</h3>
+  <h3><strong>Mobile &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : </strong>{{ profile.phoneNumber }}</h3>
+  <h3><strong>Address &nbsp &nbsp&nbsp : </strong>{{ profile.address }}</h3>
+  <h3><strong>City &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : </strong>{{ profile.city }}</h3>
+  <h3><strong>Country &nbsp&nbsp &nbsp : </strong>{{ profile.country }}</h3>
+  <h3><strong>Zipcode&nbsp&nbsp &nbsp&nbsp : </strong>{{ profile.zipcode }}</h3>
+
   <div id="map" onload="codeAddress() style="border-style: solid;" " style="width: 540px; height: 540px;" ></div>
   <a class="btn btn-primary" href="{% url 'portfolio:editProfile' %}"  role="button">Edit Profile</a>
 
