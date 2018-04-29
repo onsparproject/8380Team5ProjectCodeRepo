@@ -34,4 +34,5 @@ urlpatterns = [
                   url(r'^auth/', include('social_django.urls', namespace='social')),
                   url(r'^blog/', include('blog.urls', namespace='blog')),
                   url(r'^register/$', auth_views.login, {'template_name': 'account/register.html'}, name='register'),
+                  url(r'^paypal/', include('paypal.standard.ipn.urls')),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

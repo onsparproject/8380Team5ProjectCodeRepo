@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'social_django',
-    'blog'
+    'blog',
+    'paypal.standard.ipn',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -135,6 +136,17 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # May need to drop the base_dir part...
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles', BASE_DIR, 'static/')
 STATIC_URL = '/static/'
+
+#Email Settings
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'vasuparikh@gmail.com'
+EMAIL_HOST_PASSWORD = 'vasu95guy'
+EMAIL_PORT = 587
+
+#django-paypal=seetings
+PAYPAL_RECEIVER_EMAIL = 'vparikh@unomaha.edu'
+PAYPAL_TEST = True
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
