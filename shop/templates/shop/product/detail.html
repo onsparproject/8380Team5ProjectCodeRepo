@@ -70,6 +70,7 @@
 				</div>
 			</div>
 			<h3 class="display-4"> Reviews:</h3>
+			<p>{{ positive }}<span class="glyphicon glyphicon-thumbs-up"></span>   {{ negative }}<span class="glyphicon glyphicon-thumbs-down"></span></p>
 			<br>
 			<div class="col-sm-6 col-md-12">
 				 {% for review in reviews %}
@@ -80,6 +81,11 @@
 										<h3>{{ review.title }}</h3>
 					  				<p class="mb-0">{{ review.text }}</p>
 										<br>
+										<h5>Anger:{{ review.angerScore }}</h5>
+										<h5>Fear:{{ review.fearScore }}</h5>
+										<h5>Joy:{{ review.joyScore }}</h5>
+										<h5>Sad:{{ review.sadScore }}</h5>
+										<h5>Disgust:{{ review.disgustScore }}</h5>
 										<h5>{{ review.author }}</h5><h6>  {{review.published_date}}</h6>
 										</blockquote>
 										</div>
@@ -91,6 +97,11 @@
 											<h3>{{ review.title }}</h3>
 						  				<p class="mb-0">{{ review.text }}</p>
 											<br>
+											<h5>Anger:{{ review.angerScore }}</h5>
+											<h5>Fear:{{ review.fearScore }}</h5>
+											<h5>Joy:{{ review.joyScore }}</h5>
+											<h5>Sad:{{ review.sadScore }}</h5>
+											<h5>Disgust:{{ review.disgustScore }}</h5>
 											<h5>{{ review.author }}</h5><h6>  {{review.published_date}}</h6>
 											</blockquote>
 										</div>

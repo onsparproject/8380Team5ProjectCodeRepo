@@ -11,9 +11,9 @@ class Profile(models.Model):
     bdate = models.DateField(blank=True, null=True)
     photo = models.CharField(max_length=200, db_index=True)
     phoneNumber = models.IntegerField(default=1234567890)
-    address = models.CharField(max_length=250,default=None)
-    city = models.CharField(max_length=250,default=None)
-    country = models.CharField(max_length=250, default=None)
+    address = models.CharField(max_length=250,null=True)
+    city = models.CharField(max_length=250,null=True)
+    country = models.CharField(max_length=250, null=True)
     zipcode = models.IntegerField(default=12345)
 
     def __str__(self):
