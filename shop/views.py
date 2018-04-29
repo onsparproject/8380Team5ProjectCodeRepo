@@ -87,7 +87,7 @@ def french(request, id):
     translatedObject =  translatedReview(reviews, 'fr').getTranslated()
     reviews = translatedObject
     return render(request,
-                  'shop/product/detail.html',
+                  'shop/product/other_languages.html',
                   {'product': target_product,
                    'cart_product_form': cart_product_form,
                     'reviews':reviews})
@@ -102,7 +102,7 @@ def spanish(request, id):
     translatedObject =  translatedReview(reviews, 'es').getTranslated()
     reviews = translatedObject
     return render(request,
-                  'shop/product/detail.html',
+                  'shop/product/other_languages.html',
                   {'product': target_product,
                    'cart_product_form': cart_product_form,
                     'reviews':reviews})
@@ -117,7 +117,7 @@ def hindi(request, id):
     translatedObject =  translatedReview(reviews, 'hi').getTranslated()
     reviews = translatedObject
     return render(request,
-                  'shop/product/detail.html',
+                  'shop/product/other_languages.html',
                   {'product': target_product,
                    'cart_product_form': cart_product_form,
                     'reviews':reviews})
