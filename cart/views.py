@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from decimal import Decimal
 from paypal.standard.forms import  PayPalPaymentsForm
 from django.views.decorators.csrf import csrf_exempt
+from portfolio.models import Profile
 
 
 
@@ -44,6 +45,11 @@ def cart_detail(request):
 
 
 def payment(request):
+    profile = Profile.objects.all().filter(user=request.user)
+    if len(profile) > 0:
+        if profile[0].profileFilled == False:
+            return redirect('portfolio:fillProfile')
+
     cart = Cart(request)
     confirmed_order = Order(total_price=priceCalculator(cart))
     confirmed_order.save()

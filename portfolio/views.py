@@ -112,15 +112,22 @@ def notifications(request):
 @login_required
 def myProfile(request):
     my_profile = Profile.objects.all().filter(user=request.user)
-    geolocator = Nominatim()
-    location = geolocator.geocode(str(my_profile[0].address)+", "+str(my_profile[0].city))
-    return render(request,
-                  'portfolio/myProfile.html',
-                  {'user': request.user,
-                  'profile': my_profile[0],
-                  'lat': location.latitude,
-                  'long': location.longitude,
-                  'loc': str(my_profile[0].address)+", "+str(my_profile[0].city)})
+    if len(my_profile) > 0 and my_profile[0].profileFilled:
+        geolocator = Nominatim()
+        location = geolocator.geocode(str(my_profile[0].address)+", "+str(my_profile[0].city))
+        return render(request,
+                      'portfolio/myProfile.html',
+                      {'user': request.user,
+                      'profile': my_profile[0],
+                      'lat': location.latitude,
+                      'long': location.longitude,
+                      'loc': str(my_profile[0].address)+", "+str(my_profile[0].city)})
+
+    else:
+        my_profile = Profile.objects.all().filter(user=request.user)
+        if len(my_profile) == 0:
+            profile = Profile.objects.create(user=request.user)
+        return redirect('portfolio:fillProfile')
 
 
 @login_required
