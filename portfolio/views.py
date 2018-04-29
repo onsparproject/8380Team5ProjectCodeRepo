@@ -3,7 +3,7 @@ from .models import *
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-from .forms import   UserEditForm, ProfileEditForm
+from .forms import   UserEditForm, ProfileEditForm, UserRegistrationForm
 from django.db.models import Sum
 from shop.views import * #added
 from shop.models import Product
