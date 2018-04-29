@@ -16,7 +16,8 @@ urlpatterns = [
     url(r'^register/$', views.register, name='register'),
     url(r'^profile/$', views.myProfile, name='myProfile'),
     url(r'^profileEdit/$', views.edit, name='editProfile'),
+    url(r'^fillProfile/$', views.fillProfile, name='fillProfile'),
     url(r'^notifications/$', views.notifications, name='notifications'),
-    
-
+    url(r'^sendConfimationEmail/$', views.sendConfimationEmail, name='sendEmail'),
+    url(r'^activation/$', views.activation, name='activation'),
 ]

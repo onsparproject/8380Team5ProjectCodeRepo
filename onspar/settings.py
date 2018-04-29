@@ -138,11 +138,11 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles', BASE_DIR, 'static/')
 STATIC_URL = '/static/'
 
 #Email Settings
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'vasuparikh@gmail.com'
-EMAIL_HOST_PASSWORD = 'vasu95guy'
+EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
+EMAIL_HOST_USER = 'Onspar'
+EMAIL_HOST_PASSWORD = 'password123'
+EMAIL_USE_TLS = True
 
 #django-paypal=seetings
 PAYPAL_RECEIVER_EMAIL = 'vparikh@unomaha.edu'

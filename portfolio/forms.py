@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile, User
+from .models import Profile, User, activationToken
 from django.contrib.auth.models import User
 
 class UserRegistrationForm(forms.ModelForm):
@@ -19,11 +19,21 @@ class UserRegistrationForm(forms.ModelForm):
         return cd['password2']
 
 
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+
 
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'email')
+
+
+class activationForm(forms.ModelForm):
+    class Meta:
+        model = activationToken
+        fields = ('entered_token',)
 
 
 class ProfileEditForm(forms.ModelForm):
