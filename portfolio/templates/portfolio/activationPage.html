@@ -1,0 +1,13 @@
+{% extends "portfolio/noaccess.html" %}
+
+{% block title %}Activation Code{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Confirmation Pending, please enter Activation Code:</h1>
+     <form method="POST" class="activtaion-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+  <span><a href="{% url 'portfolio:sendEmail'%}">Send confirmation mail again?</a>
+{% endblock %}

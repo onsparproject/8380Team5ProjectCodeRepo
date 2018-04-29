@@ -15,10 +15,16 @@ class Profile(models.Model):
     city = models.CharField(max_length=250,null=True)
     country = models.CharField(max_length=250, null=True)
     zipcode = models.IntegerField(default=12345)
+    activation_token = str(uuid4()).replace('-', '')[:7]
+    activated = models.BooleanField(default=False)
+    profileFilled = models.BooleanField(default=False)
 
     def __str__(self):
         return 'Profile for user {}'.format(self.user.username)
 
+
+class activationToken(models.Model):
+    entered_token = models.CharField(max_length=250, null=True)
 
 
 class Order(models.Model):

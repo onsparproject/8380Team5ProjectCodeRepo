@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.contrib.auth import views
 from django.conf import settings
 from django.conf.urls.static import static
-from shop.views import product_list
+from portfolio.views import user_login
 from django.contrib.auth import views as auth_views
 from portfolio.views import register
 
@@ -29,7 +29,7 @@ urlpatterns = [
                   url(r'^shopping/', include('shop.urls', namespace='shop')),
                   # url(r'^', include ('shop.urls', namespace='shop')), #added
                   # url(r'^product/$', views.product_list, name='product_list'),
-                  url(r'^login/$', auth_views.login, {'template_name': 'portfolio/login.html'}, name='login'),
+                  url(r'^login/$', user_login, name='login'),
                   url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
                   url(r'^auth/', include('social_django.urls', namespace='social')),
                   url(r'^blog/', include('blog.urls', namespace='blog')),
